@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>testes</title>
+
+</head>
+<body>
+    <h1>SchoolFlow</h1>
+    <h2>Esse site tem o intuido de ajudar todas nós de alguma maneira</h2>
+
+    <div id="resposta">
+        <button onclick="materiaS()">Aulas da semana</button>
+        <button onclick="enviarEmail()">Enviar por e-mail</button>
+        
+    </div>
+    <h2>Minhas atividades</h2>
+
+<div id="informacoes">
+    <label>Tipo:</label>
+    <select id="tipo">
+        <option value="Prova">Prova</option>
+        <option value="Trabalho">Trabalho</option>
+    </select>
+
+    <label>Matéria:</label>
+    <input type="text" id="materia" placeholder="Ex: Matemática">
+
+    <label>Data:</label>
+    <input type="date" id="data">
+
+    <label>Descrição:</label>
+    <input type="text" id="descricao" placeholder="Ex: Prova de equações">
+
+    <button onclick="adicionarAtividade()">Adicionar</button>
+</div>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Matéria</th>
+            <th>Data</th>
+            <th>Descrição</th>
+         
+        </tr>
+    </thead>
+
+    <tbody id="tabelaAtividades">
+    </tbody>
+</table>
+
+    <script src="script.js"></script>
+</body>
+</html>
