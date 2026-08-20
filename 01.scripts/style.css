@@ -1,0 +1,25 @@
+
+body{
+    background:linear-gradient(135deg,#ff5f5f,#8393ee);
+    color:rgb(255, 255, 255);
+    text-align: center;
+    min-height:100vh;
+    
+}
+
+button{
+    background:rgb(255, 255, 255);
+    color:#000000;
+    border:none;
+    padding:12px 25px;
+    
+    border-radius:30px;
+    cursor:pointer;
+    font-size:1rem;
+    margin-top: 10px;
+}
+
+button:hover{
+    transition:0.3s;
+    transform:scale(1.05);
+}

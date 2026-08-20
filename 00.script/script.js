@@ -65,9 +65,12 @@ function materiaS() {
         </table>
     `;
 }
-const atividades = [];
+let atividades = [];
+carregarDados()
+mostrarNaTabela();
 
 function adicionarAtividade() {
+    carregarDados()
 
     const tipo = document.getElementById("tipo").value;
     const materia = document.getElementById("materia").value;
@@ -91,10 +94,10 @@ function adicionarAtividade() {
     mostrarNaTabela();
 
     limparFormulario();
+    salvarDados()
 }
 
 function mostrarNaTabela() {
-
     const tabela = document.getElementById("tabelaAtividades");
 
     tabela.innerHTML = "";
@@ -129,16 +132,35 @@ function excluir(indice) {
 }
 function enviarEmail() {
 
-    let mensagem = "Minhas atividades escolares:%0D%0A%0D%0A";
+    const email = document.getElementById("emailUsuario").value;
+
+    let mensagem = "Minhas atividades escolares:\n\n";
 
     atividades.forEach((atividade) => {
         mensagem +=
-            "Tipo: " + atividade.tipo + "%0D%0A" +
-            "Matéria: " + atividade.materia + "%0D%0A" +
-            "Data: " + atividade.data + "%0D%0A" +
-            "Descrição: " + atividade.descricao + "%0D%0A%0D%0A";
+            "Tipo: " + atividade.tipo + "\n" +
+            "Matéria: " + atividade.materia + "\n" +
+            "Data: " + atividade.data + "\n" +
+            "Descrição: " + atividade.descricao + "\n\n";
     });
 
-    window.location.href =
-        "mailto:?subject=Minhas atividades escolares&body=" + mensagem;
+    emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", {
+        email: email,
+        mensagem: mensagem
+    })
+    .then(function() {
+        alert("Atividades enviadas com sucesso!");
+    })
+    .catch(function(error) {
+        console.log(error);
+        alert("Erro ao enviar o e-mail.");
+    });
+}
+
+function salvarDados(){
+    localStorage.setItem("atividades", JSON.stringify(atividades))
+}
+
+function carregarDados(){
+    atividades = JSON.parse(localStorage.getItem("atividades")) || []
 }
